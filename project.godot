@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="3D UI"
+run/main_scene="res://scenes/UI.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+InventoryManager="*res://scripts/InventoryManager.cs"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="IOC 3D UI"
+
+[file_customization]
+
+folder_colors={
+"res://items/": "red",
+"res://scenes/": "green"
+}
+
+[filesystem]
+
+import/fbx/enabled=false
+
+[input]
+
+click={
+"deadzone": 0.0,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(221, 50),"global_position":Vector2(229, 130),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true

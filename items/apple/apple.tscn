@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8e6s82q6xlcs"]
+
+[ext_resource type="Script" path="res://scenes/items/Item.cs" id="1_5adm7"]
+[ext_resource type="PackedScene" uid="uid://deshlopdl2x44" path="res://items/apple/Apple.glb" id="3_gkqtm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xav3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6thk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvwy2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttayf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvbvk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_liqhn"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Item" type="Button"]
+texture_filter = 1
+custom_minimum_size = Vector2(254, 254)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xav3d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j6thk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lvwy2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ttayf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vvbvk")
+script = ExtResource("1_5adm7")
+angleXMax = 30.0
+angleYMax = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_liqhn")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(128, 128)
+render_target_clear_mode = 2
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 2, -5.96026e-08, 2.08165e-12)
+projection = 1
+size = 0.15
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.687225, -0.471457, 0.552676, -0.408269, 0.879935, 0.242962, -0.600865, -0.0586711, -0.797194, 1.03171, 0.104817, -1.36291)
+light_color = Color(0.901961, 0.894118, 0.894118, 1)
+light_cull_mask = 4294966273
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.249218, 0.121447, 0.960802, 0.198558, -0.964622, 0.173433, 0.947874, 0.233997, 0.216287, 1.20848, 0.043312, 0.603727)
+light_energy = 0.2
+light_cull_mask = 4294966273
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(0.876105, 0.00757284, -0.482061, -0.0659314, 0.992365, -0.104235, 0.477591, 0.123104, 0.869915, -1.15657, -0.26958, 1.89541)
+light_energy = 16.0
+light_cull_mask = 4294966273
+
+[node name="ModelContainer" type="Node3D" parent="SubViewport"]
+
+[node name="Apple" parent="SubViewport/ModelContainer" instance=ExtResource("3_gkqtm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0388892, 0)
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
