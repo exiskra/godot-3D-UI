@@ -6,4 +6,6 @@ Keep in mind, this project uses C# and was last tested on Godot 4.3!
 In this approach, items use a 3D model that reacts to mouse hover as well as mouse position for a juicy effect.
 They can also be dragged into different slots, and react to being dragged as well.
 
+Food item models are from Kenney (https://kenney.nl/), downloaded from poly.pizza (https://poly.pizza/).
+
 ![image_alt](https://github.com/exiskra/godot-3D-UI/blob/81077afa5e1d3eab2f8c931f3dbe25a04e023649/godot_3D_UI_demonstration.gif)
