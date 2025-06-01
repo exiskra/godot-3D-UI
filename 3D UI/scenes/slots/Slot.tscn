@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bex2mogmvons5"]
+
+[ext_resource type="Script" path="res://scenes/slots/Slot.cs" id="1_le20d"]
+
+[node name="Slot" type="PanelContainer" groups=["inventory_slots"]]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 1
+script = ExtResource("1_le20d")

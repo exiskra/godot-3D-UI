@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://nbv4w87i7yby"]
+
+[ext_resource type="PackedScene" uid="uid://bex2mogmvons5" path="res://scenes/slots/Slot.tscn" id="1_na5od"]
+[ext_resource type="PackedScene" uid="uid://cotwabm5orour" path="res://items/banana/banana.tscn" id="2_4exje"]
+[ext_resource type="PackedScene" uid="uid://b8e6s82q6xlcs" path="res://items/apple/apple.tscn" id="3_oo1re"]
+[ext_resource type="PackedScene" uid="uid://c0ds4tvh1k846" path="res://items/turkey/turkey.tscn" id="4_xum2r"]
+
+[node name="Main" type="Node"]
+
+[node name="DragLayer" type="Control" parent="."]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InventorySlots" type="Control" parent="Inventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="ActiveSlotsGrid" type="GridContainer" parent="Inventory/InventorySlots"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 32.0
+offset_right = 1848.0
+offset_bottom = 256.0
+grow_horizontal = 2
+columns = 7
+
+[node name="Slot" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Item" parent="Inventory/InventorySlots/ActiveSlotsGrid/Slot" instance=ExtResource("2_4exje")]
+layout_mode = 2
+
+[node name="Slot2" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot3" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot4" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/InventorySlots/ActiveSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="UnusedSlotsGrid" type="GridContainer" parent="Inventory/InventorySlots"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 470.0
+offset_right = 1848.0
+offset_bottom = 1010.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+columns = 7
+
+[node name="Slot" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot2" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Item" parent="Inventory/InventorySlots/UnusedSlotsGrid/Slot2" instance=ExtResource("3_oo1re")]
+layout_mode = 2
+
+[node name="Slot3" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Slot4" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/InventorySlots/UnusedSlotsGrid" instance=ExtResource("1_na5od")]
+layout_mode = 2
+
+[node name="Item" parent="Inventory/InventorySlots/UnusedSlotsGrid/Slot7" instance=ExtResource("4_xum2r")]
+layout_mode = 2
