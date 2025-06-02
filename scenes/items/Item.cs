@@ -44,6 +44,7 @@ private bool isDragging = false;
 
 public Node originalParent;
 public Vector2 originalPosition;
+private Vector3 originalRotation = Vector3.Zero;
 
 #region Setup
 
@@ -64,7 +65,6 @@ public override void _Ready()
 
     AddToGroup("items");
     MouseFilter = MouseFilterEnum.Stop; // Ensure we receive mouse events
-
 }
 
 private void SetupComponents()
@@ -79,6 +79,10 @@ private void SetupComponents()
     {
         initialModelPosition = modelContainer.Position;
     }
+
+    originalRotation = modelContainer.Rotation;
+    subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
+    isSubViewportIdle = true;
 }
 
 private void SetupSignals()
@@ -115,8 +119,29 @@ private void InitializeValues()
 
 #region Processes
 
+private bool isSubViewportIdle = false;
+
+
 public override void _Process(double delta)
 {
+    bool isIdle =
+        !isDragging && !isMoving &&
+        currentRotation.IsEqualApprox(originalRotation) &&
+        targetRotation.IsEqualApprox(originalRotation);
+
+    if (isIdle && !isSubViewportIdle)
+    {
+        subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Once;
+        isSubViewportIdle = true;
+    }
+    else if (!isIdle && isSubViewportIdle)
+    {
+        subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.WhenVisible;
+        isSubViewportIdle = false;
+    }
+
+    if (isIdle) return;
+
     UpdateHoverTilt((float)delta);
 
     if (isDragging)
@@ -166,6 +191,7 @@ private void OnMouseEntered()
 {
     if (!isDragging && !inventoryManager.isHoldingItem)
     {
+        subViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.WhenVisible;
         ScaleTo(hoverScaleFactor);
         UpdateTargetRotation(GetLocalMousePosition());
         ZIndex = 10;
