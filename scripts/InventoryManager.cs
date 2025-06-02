@@ -38,6 +38,12 @@ public partial class InventoryManager : Control
         CallDeferred(nameof(ConnectSignals));
     }
 
+    public override void _Process(double delta)
+    {
+        GD.Print("Current FPS: " + Engine.GetFramesPerSecond());
+    }
+
+
     // We connect the signals from the slots and items. 
     // Keep in mind, we add slots and items to their respective groups in code, no need to do it in the editor
     private void ConnectSignals()
